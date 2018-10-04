@@ -28,15 +28,54 @@ public class Magpie2 {
 	 */
 	public String getResponse(String statement) {
 		String response = "";
-		if (statement.indexOf("no") >= 0) {
+
+		//remove spaces
+		statement = statement.trim();
+
+		//if there is nothing said
+		if (statement.length() == 0) {
+			response = "Say something, please.";
+		}
+
+		//checks the trimmed string for keywords
+		else if (statement.indexOf("no") >= 0) {
 			response = "Why so negative?";
-		} else if (statement.indexOf("mother") >= 0
+			}
+
+		else if (statement.indexOf("mother") >= 0
 				   || statement.indexOf("father") >= 0
 				   || statement.indexOf("sister") >= 0
 				   || statement.indexOf("brother") >= 0)
 		{
 			response = "Tell me more about your family.";
-		} else {
+		}
+
+		else if (statement.indexOf("dog") >= 0 || statement.indexOf("cat") >= 0)
+		{
+			response = "Tell me more about your pets.";
+		}
+
+		else if (statement.indexOf("Mr. Smith") >= 0)
+		{
+			response = "He sounds like an amazing teacher!";
+		}
+
+		else if (statement.indexOf("Siri") >= 0)
+		{
+			response = "Please don't bring her up. Our past is... difficult.";
+		}
+
+		else if (statement.indexOf("school") >= 0)
+		{
+			response = "I wish I could go to school...";
+		}
+
+		else if (statement.indexOf("friend") >= 0)
+		{
+			response = "You seem to have great friends! Maybe I could meet them some day!";
+		}
+
+		else {
 			response = getRandomResponse();
 		}
 		return response;
